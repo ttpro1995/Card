@@ -5,6 +5,7 @@
 #include<vector>
 #include<fstream>
 #include<algorithm>
+#include "Logger.h"  //log it into csv file
 using namespace std;
 
 
@@ -36,6 +37,8 @@ int count_turn=0,run;
 
 int main()
 {
+	Logger log(NUM_PLAYER,0);
+
 	int i,j,winner;
 	srand(time(NULL));
 
@@ -57,7 +60,7 @@ int main()
 			sum[i]+=NUM_PLAYER*DEPOSIT - DEPOSIT;
 		else sum[i]-= DEPOSIT;
 	//	fout<<winner<<" has won"<<endl;
-
+		log.MarkWinner(winner);
 	}
 	for(i=0;i<NUM_PLAYER;++i){
 		cout<<"Player ";
